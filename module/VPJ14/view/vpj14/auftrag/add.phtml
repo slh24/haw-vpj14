@@ -1,0 +1,28 @@
+<?php
+// module/VPJ14/view/vpj14/auftrag/add.phtml:
+
+$title = 'Neuen Auftrag erstellen';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+$form->setAttribute('action', $this->url('auftrag', array('action' => 'add')));
+$form->setAttribute('class', 'form-horizontal');
+$form->prepare();
+
+echo $this->form()->openTag($form); ?>
+<?php for ($i = 1; $i <= 4; $i++) : ?>
+	<div class="form-group<?php echo (empty($this->formElementErrors($form->get('schritt_'. $i .'_maschine'))) && empty($this->formElementErrors($form->get('schritt_'. $i .'_dauer')))) ? null : ' has-error';?>">
+		<?php echo $this->formLabel($form->get('schritt_'. $i .'_maschine')); ?>
+		<div class ="col-sm-2"><?php echo $this->formElement($form->get('schritt_'. $i .'_maschine')); ?></div>
+		<div class ="col-sm-2"><?php echo $this->formElement($form->get('schritt_'. $i .'_dauer')); ?></div>
+		<?php echo empty($this->formElementErrors($form->get('schritt_'. $i .'_dauer'))) ? null : '<span class="help-block">Die Bearbeitungsdauer muss zwischen 0 und 65535 Sekunden liegen.</span>';?>
+	</div>
+<?php endfor; ?>
+<div class="form-group<?php echo empty($this->formElementErrors($form->get('anz_soll'))) ? null : ' has-error';?>">
+	<?php echo $this->formLabel($form->get('anz_soll')); ?>
+	<div class ="col-sm-4"><?php echo $this->formElement($form->get('anz_soll')); ?></div>
+	<?php echo empty($this->formElementErrors($form->get('anz_soll'))) ? null : '<span class="help-block">Die Anzahl zu fertigender Teile muss zwischen 1 und 65535 liegen.</span>';?>
+</div>
+<?php echo $this->formSubmit($form->get('submit'));
+echo $this->form()->closeTag();
