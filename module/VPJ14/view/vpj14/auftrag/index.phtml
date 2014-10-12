@@ -1,23 +1,10 @@
 <?php
 // module/VPJ14/view/vpj14/auftrag/index.phtml:
 
-$title = 'Auftragsübersicht';
+$title = 'Aufträge';
 $this->headTitle($title);
 ?>
 <h1><?php echo $this->escapeHtml($title); ?></h1>
 <p>
-    <a href="<?php echo $this->url('auftrag', array('action'=>'add'));?>">Neuen Auftrag hinzufügen</a>
+    <a href="<?php echo $this->url('auftrag', array('action'=>'add'));?>">Neuen Auftrag erstellen</a>
 </p>
-
-<table class="table">
-<tr>
-    <th>Title</th>
-    <th>Artist</th>
-</tr>
-<?php /* foreach ($auftraege as $auftrag) : ?>
-<tr>
-    <td><?php echo $this->escapeHtml($auftrag->title);?></td>
-    <td><?php echo $this->escapeHtml($auftrag->artist);?></td>
-</tr>
-<?php endforeach; */ ?>
-</table>

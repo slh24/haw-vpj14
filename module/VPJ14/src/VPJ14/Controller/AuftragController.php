@@ -20,12 +20,13 @@ class AuftragController extends AbstractActionController
 		return $this->auftragTable;
 	}
 	
+	/* nicht benötigt, da auf Startseite keine Auftragsübersicht gezeigt wird
 	public function indexAction()
 	{
 		return new ViewModel(array(
 				'auftraege' => $this->getAuftragTable()->fetchAll(),
 		));
-	}
+	}*/
 
 	public function addAction()
 	{
