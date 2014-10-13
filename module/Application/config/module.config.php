@@ -15,7 +15,7 @@ return array(
                 'options' => array(
                     'route'    => '/',
                     'defaults' => array(
-                        'controller' => 'VPJ14\Controller\Auftrag',
+                        'controller' => 'Application\Controller\Index',
                         'action'     => 'index',
                     ),
                 ),
@@ -52,6 +52,24 @@ return array(
             ),
         ),
     ),
+    'navigation' => array(
+    		'default' => array(
+    				array(
+    						'label' => 'Home',
+    						'route' => 'home',
+    				),
+    				array(
+    						'label' => 'Auftrag erstellen',
+    						'route' => 'auftrag',
+    						'action' => 'add',
+    				),
+    				array(
+    						'label' => 'Auftragsstatus prüfen',
+    						'route' => 'auftrag',
+    						'action' => 'state',
+    				),
+    		),
+    ),
     'service_manager' => array(
         'abstract_factories' => array(
             'Zend\Cache\Service\StorageCacheAbstractServiceFactory',
@@ -59,6 +77,9 @@ return array(
         ),
         'aliases' => array(
             'translator' => 'MvcTranslator',
+        ),
+        'factories' => array(
+        		'navigation' => 'Zend\Navigation\Service\DefaultNavigationFactory',
         ),
     ),
     'translator' => array(

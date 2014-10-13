@@ -39,7 +39,7 @@ class AuftragForm extends Form
 					'attributes' => array(
 							'id' => 'schritt_'. $i .'_dauer',
 							'class' => 'form-control',
-							'placeholder' => 'Bearbeitungsdauer',
+							'placeholder' => 'Bearbeitungsdauer [s]',
 					),
 			));
 		}
@@ -65,7 +65,7 @@ class AuftragForm extends Form
 				'attributes' => array(
 						'value' => 'Go',
 						'id' => 'submitbutton',
-						'class' => 'btn btn-default',
+						'class' => 'btn btn-primary',
 				),
 		));
 	}

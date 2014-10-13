@@ -3,6 +3,7 @@
 namespace VPJ14\Model;
 
 use Zend\Db\TableGateway\TableGateway;
+use Zend\Filter\Int;
 
 class AuftragTable
 {
@@ -12,11 +13,15 @@ class AuftragTable
 	{
 		$this->tableGateway = $tableGateway;
 	}
-
-	public function fetchAll()
-	{
-		$resultSet = $this->tableGateway->select();
-		return $resultSet;
+	
+	public function getAuftrag($id) {
+		$id  = (int) $id;
+		$row = $this->tableGateway->select(array('id' => $id))->current();
+		if (!$row) {
+			throw new \Exception("Could not find row $id");
+		}
+		//$anz_soll = $row->
+		return $row;
 	}
 
 	public function saveAuftrag(Auftrag $auftrag)
@@ -36,5 +41,6 @@ class AuftragTable
 		);
 
 		$this->tableGateway->insert($data);
+		return $this->tableGateway->lastInsertValue;
 	}
 }

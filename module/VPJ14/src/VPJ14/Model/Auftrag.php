@@ -17,6 +17,7 @@ class Auftrag implements InputFilterAwareInterface
 	public $schritt_4_maschine;
 	public $schritt_4_dauer;
 	public $anz_soll;
+	public $anz_ist;
 	protected $inputFilter;
 
 	public function exchangeArray($data)
@@ -30,6 +31,7 @@ class Auftrag implements InputFilterAwareInterface
 		$this->schritt_4_maschine = (!empty($data['schritt_4_maschine'])) ? $data['schritt_4_maschine'] : null;
 		$this->schritt_4_dauer = (!empty($data['schritt_4_dauer'])) ? $data['schritt_4_dauer'] : null;
 		$this->anz_soll = (!empty($data['anz_soll'])) ? $data['anz_soll'] : null;
+		$this->anz_ist = (!empty($data['anz_ist'])) ? $data['anz_ist'] : null;
 	}
 	
 	public function getArrayCopy()

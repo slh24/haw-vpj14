@@ -1,0 +1,49 @@
+<?php
+// module/VPJ14/view/vpj14/auftrag/state.phtml:
+
+$title = 'Auftragsstatus prüfen';
+$this->headTitle($title);
+?>
+<h1><?php echo $this->escapeHtml($title); ?></h1>
+<?php
+$form->setAttribute('action', $this->url('auftrag', array('action' => 'state')));
+$form->setAttribute('class', 'form-inline');
+$form->prepare();
+?>
+<?php if (isset($message)) : ?>
+<div class="alert alert-danger"><?php echo $message; ?></div>
+<?php elseif (!isset($id)) : ?>
+<div class="alert alert-info">Bitte geben Sie unten eine gültige Auftrags-ID an, damit wir Ihnen den aktuellen Status anzeigen können.</div>
+<?php endif; ?>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-4">
+    	<div>&nbsp;</div>
+    	<?php echo $this->form()->openTag($form); ?>
+		<div class="form-group">
+			<?php echo $this->formLabel($form->get('id')); ?>
+			<?php echo $this->formElement($form->get('id')); ?>
+		</div>
+		<?php echo $this->formSubmit($form->get('submit')); ?>
+		<?php echo $this->form()->closeTag(); ?>
+	</div>
+	
+	<?php if (isset($id)) : ?>
+	<div class="col-sm-8">
+		<div class="panel panel-success">
+			<div class="panel-heading">Status zur Auftrags-ID <?php echo $id; ?></div>
+			<div class="panel-body">
+				<p>Von Ihrem Auftrag sind derzeit <?php echo $anz_ist; ?> von <?php echo $anz_soll; ?> Teilen fertig bearbeitet.
+				<div class="progress">
+					<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?php echo $anz_ist; ?>" aria-valuemin="0" aria-valuemax="<?php echo $anz_soll; ?>" style="width: <?php echo ($anz_ist/$anz_soll)*100; ?>%;">
+						<?php echo ($anz_ist/$anz_soll)*100; ?>%
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<?php endif; ?>
+  </div>
+</div>
