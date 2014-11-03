@@ -12,17 +12,21 @@ $form->prepare();
 
 echo $this->form()->openTag($form); ?>
 <?php for ($i = 1; $i <= 4; $i++) : ?>
-	<div class="form-group<?php echo (empty($this->formElementErrors($form->get('schritt_'. $i .'_maschine'))) && empty($this->formElementErrors($form->get('schritt_'. $i .'_dauer')))) ? null : ' has-error';?>">
+	<div class="form-group<?php echo ($this->formElementErrors($form->get('schritt_'. $i .'_maschine')) || $this->formElementErrors($form->get('schritt_'. $i .'_dauer'))) ? ' has-error' : null;?>">
 		<?php echo $this->formLabel($form->get('schritt_'. $i .'_maschine')); ?>
-		<div class ="col-sm-2"><?php echo $this->formElement($form->get('schritt_'. $i .'_maschine')); ?></div>
-		<div class ="col-sm-2"><?php echo $this->formElement($form->get('schritt_'. $i .'_dauer')); ?></div>
-		<?php echo empty($this->formElementErrors($form->get('schritt_'. $i .'_dauer'))) ? null : '<span class="help-block">Die Bearbeitungsdauer muss zwischen 0 und 65535 Sekunden liegen.</span>';?>
+		<div class ="col-sm-3"><?php echo $this->formElement($form->get('schritt_'. $i .'_maschine')); ?></div>
+		<div class ="col-sm-4"><?php echo $this->formElement($form->get('schritt_'. $i .'_dauer')); ?></div>
+		<?php echo $this->formElementErrors($form->get('schritt_'. $i .'_dauer')) ? '<span class="help-block">Die Bearbeitungsdauer muss zwischen 0 und 30000 Sekunden liegen.</span>' : null;?>
 	</div>
 <?php endfor; ?>
-<div class="form-group<?php echo empty($this->formElementErrors($form->get('anz_soll'))) ? null : ' has-error';?>">
+<div class="form-group<?php echo $this->formElementErrors($form->get('anz_soll')) ? ' has-error' : null;?>">
 	<?php echo $this->formLabel($form->get('anz_soll')); ?>
-	<div class ="col-sm-4"><?php echo $this->formElement($form->get('anz_soll')); ?></div>
-	<?php echo empty($this->formElementErrors($form->get('anz_soll'))) ? null : '<span class="help-block">Die Anzahl zu fertigender Teile muss zwischen 1 und 65535 liegen.</span>';?>
+	<div class ="col-sm-3"><?php echo $this->formElement($form->get('anz_soll')); ?></div>
+	<?php echo $this->formElementErrors($form->get('anz_soll')) ? '<span class="help-block">Die Anzahl zu fertigender Teile muss zwischen 1 und 30000 liegen.</span>' : null; ?>
 </div>
-<?php echo $this->formSubmit($form->get('submit'));
-echo $this->form()->closeTag();
+<div class="form-group">
+	<div class="col-sm-offset-2 col-sm-2">
+		<?php echo $this->formSubmit($form->get('submit')); ?>
+	</div>
+</div>
+<?php echo $this->form()->closeTag();

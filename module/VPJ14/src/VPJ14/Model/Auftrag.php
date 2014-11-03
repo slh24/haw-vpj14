@@ -77,7 +77,7 @@ class Auftrag implements InputFilterAwareInterface
 										'name' => 'Between',
 										'options' => array(
 												'min' => 0,
-												'max' => 65535,
+												'max' => 30000,
 										),
 								),
 						),
@@ -95,7 +95,7 @@ class Auftrag implements InputFilterAwareInterface
 									'name' => 'Between',
 									'options' => array(
 											'min' => 1,
-											'max' => 65535,
+											'max' => 30000,
 									),
 							),
 					),

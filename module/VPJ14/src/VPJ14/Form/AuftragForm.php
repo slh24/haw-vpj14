@@ -18,7 +18,7 @@ class AuftragForm extends Form
 					'options' => array(
 							'label' => 'Schritt '. $i,
 							'label_attributes' => array(
-									'class' => 'col-sm-1 control-label',
+									'class' => 'col-sm-2 control-label',
 							),
 							'value_options' => array(
 									'' => 'Keine Maschine',
@@ -50,7 +50,7 @@ class AuftragForm extends Form
 				'options' => array(
 						'label' => 'Anzahl',
 						'label_attributes' => array(
-								'class' => 'col-sm-1 control-label',
+								'class' => 'col-sm-2 control-label',
 						),
 				),
 				'attributes' => array(

@@ -34,7 +34,7 @@ $form->prepare();
 		<div class="panel panel-success">
 			<div class="panel-heading">Status zur Auftrags-ID <?php echo $id; ?></div>
 			<div class="panel-body">
-				<p>Von Ihrem Auftrag sind derzeit <?php echo $anz_ist; ?> von <?php echo $anz_soll; ?> Teilen fertig bearbeitet.
+				<p>Von Ihrem Auftrag sind derzeit <?php echo $anz_ist ? $anz_ist : '0' ; ?> von <?php echo $anz_soll; ?> Teilen fertig bearbeitet.
 				<div class="progress">
 					<div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="<?php echo $anz_ist; ?>" aria-valuemin="0" aria-valuemax="<?php echo $anz_soll; ?>" style="width: <?php echo ($anz_ist/$anz_soll)*100; ?>%;">
 						<?php echo ($anz_ist/$anz_soll)*100; ?>%
